@@ -43,9 +43,8 @@
     </body>
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.foundation.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    
+    <script src="{{asset('js/script.js')}}"></script>
     <script>
         $(function() {
             $('#data-tables').DataTable({
