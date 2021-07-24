@@ -15,8 +15,17 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Anasayfa') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.index')">
+                        {{ __('Ürünler') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('references.index') }}" :active="request()->routeIs('references.index')">
+                        {{ __('Referanslar') }}
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                         {{ __('Kullanıcılar') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('settings.edit',1) }}" :active="request()->routeIs('settings.edit')">
+                        {{ __('Ayarlar') }}
                     </x-jet-nav-link>
                 </div>
             </div>

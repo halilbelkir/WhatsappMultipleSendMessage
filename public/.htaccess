@@ -19,3 +19,61 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+<IfModule mod_headers.c>
+  <filesmatch "\.(webp|ico|flv|jpg|jpeg|png|gif|css|js|swf|svg)$">
+  Header set Cache-Control "max-age=31536000"
+  </filesmatch>
+  <filesmatch "\.(html|htm)$">
+  Header set Cache-Control "max-age=31536000, public"
+  </filesmatch>
+  <filesmatch "\.(pdf)$">
+  Header set Cache-Control "max-age=31536000, public"
+  </filesmatch>
+  <filesmatch "\.(js)$">
+  Header set Cache-Control "max-age=31536000, public"
+  </filesmatch>
+  <filesmatch "\.(css)$">
+  Header set Cache-Control "max-age=31536000, public"
+  </filesmatch>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options: "nosniff"
+  Header always set Referrer-Policy: "unsafe-url"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set Permissions-Policy "geolocation=(),midi=(),sync-xhr=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()"
+  Header always set Content-Security-Policy "default-src https: 'unsafe-inline' 'unsafe-eval'; font-src 'self' data: https://fonts.gstatic.com https://use.fontawesome.com;"
+  #Header always set Content-Security-Policy-Report-Only "default-src https: 'unsafe-inline' 'unsafe-eval'; font-src 'self' data: https://fonts.gstatic.com https://use.fontawesome.com;"
+
+  <filesmatch "\.(css|js|pdf|svg|html(\.[a-z][a-z](|_[A-Z][A-Z]|_Han[st])))?$">
+  Header always set Feature-Policy: "\
+  accelerometer 'none'; \
+  ambient-light-sensor 'none'; \
+  autoplay 'none'; \
+  camera 'none'; \
+  display-capture 'none'; \
+  document-domain 'none'; \
+  document-write 'none'; \
+  encrypted-media 'none'; \
+  fullscreen 'none'; \
+  geolocation 'none'; \
+  gyroscope 'none'; \
+  magnetometer 'none'; \
+  microphone 'none'; \
+  midi 'none'; \
+  payment 'none'; \
+  picture-in-picture 'none'; \
+  speaker 'none'; \
+  sync-xhr 'none'; \
+  usb 'none'; \
+  wake-lock 'none'; \
+  webauthn 'none'; \
+  vr 'none'; \
+  xr 'none'; \
+  "
+  </filesmatch>
+</IfModule>
+<FilesMatch "\.(webp|gif|ico|jpg|jpeg|png|GIF|ICO|JPG|JPEG|PNG|css|js|woff|woff2|CSS|JS|WOFF|ttf|TTF|svg|SVG)$">
+    <IfModule mod_headers.c>
+         Header unset Set-Cookie
+         Header set Cache-Control "max-age=31536000, public"
+    </IfModule>
+</FilesMatch>

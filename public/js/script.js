@@ -7,3 +7,28 @@ $(document).ready(function ()
         $('input[aria-controls="data-tables"]').attr('class','border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm');
     }, 300);
 });
+
+/////////// seflink ///////////
+
+
+function seflink1(ad,yazilacakyer)
+{
+    str = turkcekarekteryoket(ad,yazilacakyer);
+    str = str.toLowerCase();
+    str = str.replace(/\s\s+/g,' ').replace(/[^a-z0-9\s]/gi,',').replace(/[^\w]/ig,"-");
+    turkcekarekteryoket(str,yazilacakyer);
+}
+
+function turkcekarekteryoket(gelenler,yazilacakyer)
+{
+    var specialChars = [["Ã…Å¸","s"],["Ã…Â","s"],["Ã„Å¸","g"],["Ã„Â","g"],["ÃƒÂ¼","u"],["ÃƒÅ“","u"],["Ã„Â°","i"],["Ã„Â±","i"],["_","-"],["Ãƒâ€“","o"],["ÃƒÂ¶","o"],["Ãƒâ€¦Ã‚Â","S"],["Ãƒâ€Ã‚Â","G"],["ÃƒÆ’Ã¢â‚¬Â¡","C"],["Ãƒâ€¡","c"],["ÃƒÂ§","c"],["ÃƒÆ’Ã…â€œ","U"],["Ãƒâ€Ã‚Â°","I"],["ÃƒÆ’Ã¢â‚¬â€œ","O"],["Ãƒâ€¦Ã…Â¸","s"],["ç","c"],["Ç","c"],["ş","s"],["Ş","s"],["İ","i"],["I","i"],["ı","i"],["Ü","u"],["ü","u"]];
+
+    for(var i=0;i<specialChars.length;i++)
+    {
+        gelenler=gelenler.replace(eval("/"+specialChars[i][0]+"/ig"),specialChars[i][1]);
+        $(yazilacakyer).val(gelenler);
+    }
+    return gelenler;
+}
+
+/////////// seflink ///////////
