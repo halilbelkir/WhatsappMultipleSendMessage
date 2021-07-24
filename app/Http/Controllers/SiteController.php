@@ -17,7 +17,7 @@ class SiteController extends Controller
 
     public function __construct()
     {
-        $this->email = 'ibrahim.belkir@tardigrad.com.tr';
+        $this->email = 'turkay@turkaysigorta.com.tr';
     }
 
     public function productsList()
